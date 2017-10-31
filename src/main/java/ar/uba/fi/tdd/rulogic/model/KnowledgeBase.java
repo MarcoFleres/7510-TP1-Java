@@ -20,6 +20,8 @@ public class KnowledgeBase {
 
 			if(Fact.isFact(line)) {
 				addEvaluable(new Fact(line));
+			} else if(Rule.isRule(line)) {
+				addEvaluable(new Rule(line));
 			}
 
 		}
