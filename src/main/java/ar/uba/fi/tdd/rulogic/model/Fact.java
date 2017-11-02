@@ -6,9 +6,16 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static ar.uba.fi.tdd.rulogic.model.Regex.espacio;
+import static ar.uba.fi.tdd.rulogic.model.Regex.nombreFuncion;
+import static ar.uba.fi.tdd.rulogic.model.Regex.parametros;
+
 class Fact implements Evaluable {
 
-    private static Pattern factPattern = Pattern.compile("^ *([a-zA-Z]+)\\(([a-z ,]*?)\\) *\\. *$");
+    private static final Pattern factPattern = Pattern.compile(
+            "^" + espacio + "(" + nombreFuncion + ")" + espacio + // Capturamos el nombre de la funcion (verbo)
+            "\\((" + parametros + ")\\)" + espacio + "\\." + espacio + "$"// Capturamos la lista de parametros
+        );
 
     private final String verb;
     private final LinkedList<String> parameters = new LinkedList<>();
@@ -21,8 +28,8 @@ class Fact implements Evaluable {
 
         verb = matcher.group(1);
 
-        for(int i = 2 ; i <= matcher.groupCount() ; i++) {
-            parameters.add(matcher.group(i));
+        for (String parameter : matcher.group(2).split(",")) {
+            parameters.add(parameter.trim());
         }
 
     }

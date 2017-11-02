@@ -60,7 +60,7 @@ public class KnowledgeBase {
 			str.append(verb).append('\n');
 
 			for (Evaluable evaluable : evaluables.get(verb)) {
-				str.append('\t').append(evaluable);
+				str.append('\t').append(evaluable).append('\n');
 			}
 
 		}
