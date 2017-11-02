@@ -1,27 +1,34 @@
 package ar.uba.fi.tdd.rulogic.model;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.MockitoAnnotations.initMocks;
-
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
 
-import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.stream.Collectors;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class KnowledgeBaseTest {
 
-	@InjectMocks
-	private KnowledgeBase knowledgeBase = new KnowledgeBase();
-
-	public KnowledgeBaseTest() throws IOException {
-	}
+	private KnowledgeBase knowledgeBase;
 
 	@Before
 	public void setUp() throws Exception {
-		initMocks(this);
+
+		// LLemos la base de datos y la convertimos en un string
+		InputStream inputStream = KnowledgeBaseTest.class.getClassLoader().getResourceAsStream("./rules.db");
+
+		String db = new BufferedReader(new InputStreamReader(inputStream))
+				.lines()
+				.collect(Collectors.joining("\n"));
+
+		knowledgeBase = new KnowledgeBase(db);
+
+		System.out.println(knowledgeBase);
+
 	}
 
 	@Test
