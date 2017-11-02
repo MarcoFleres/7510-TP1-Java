@@ -71,11 +71,30 @@ public class KnowledgeBaseTest {
 		assertFalse(this.knowledgeBase.answer("padre(pepa, juan)"));
 		assertFalse(this.knowledgeBase.answer("padre(maria, hector)"));
 
-		assertFalse(this.knowledgeBase.answer("mujer(jgobnejaogb)"));
-		assertFalse(this.knowledgeBase.answer("varon(jgobnejaogb)"));
-		assertFalse(this.knowledgeBase.answer("padre(roberto)"));
-
 	}
 
+	@Test
+	public void testFactSyntax() {
+		assertTrue(this.knowledgeBase.answer("\tvaron ( juan\t)  . "));
+		assertFalse(this.knowledgeBase.answer("mujer(jgobnejaogb)"));
+		assertFalse(this.knowledgeBase.answer("varon(jgobnejaogb)"));
+		assertFalse(this.knowledgeBase.answer("gaebhig(juan)"));
+		assertFalse(this.knowledgeBase.answer("padre(roberto)"));		//numero de parametros incorrecto
+	}
+
+	@Test
+	public void testRules() {
+		assertTrue(this.knowledgeBase.answer("hijo(pepe, juan)"));
+		assertFalse(this.knowledgeBase.answer("hijo(juan, pepe)"));
+
+		assertTrue(this.knowledgeBase.answer("hijo(alejandro, roberto)"));
+		assertTrue(this.knowledgeBase.answer("hija(pepa, juan)"));
+		assertTrue(this.knowledgeBase.answer("hija(maria, hector)"));
+
+		assertTrue(this.knowledgeBase.answer("tio(nicolas, alejandro, roberto)"));
+		assertTrue(this.knowledgeBase.answer("tio(nicolas, cecilia, roberto)"));
+		assertFalse(this.knowledgeBase.answer("tia(maria, alejandro, roberto)"));
+
+	}
 
 }
