@@ -7,8 +7,8 @@ import java.util.regex.Pattern;
 
 class Rule implements Evaluable {
 
-    private static Pattern rulePattern = Pattern.compile(" *([a-zA-Z]+)\\(([A-Z ,]*?)\\) *:- *((?: *(?:[a-zA-Z]+)\\((?:[A-Z ,]*?)\\),? *)+)\\.");
-    private static Pattern targetPattern = Pattern.compile("([a-zA-Z]+)\\(([A-Z ,]*?)\\)");
+    private static Pattern rulePattern = Pattern.compile("\\s*([a-zA-Z]+)\\(([A-Z\\s,]*?)\\)\\s*:-\\s*((?:\\s*(?:[a-zA-Z]+)\\((?:[A-Z\\s,]*?)\\)\\s*,?\\s*)+)\\.");
+    private static Pattern targetPattern = Pattern.compile("([a-zA-Z]+)\\(([A-Z\\s,]*?)\\)");
 
     private String verb;
     private LinkedList<String> parameters = new LinkedList<>();
@@ -27,7 +27,7 @@ class Rule implements Evaluable {
 
         while(factsMatcher.find()) {
 
-            targets.add(new Target(line));
+            targets.add(new Target(factsMatcher.group()));
 
         }
 

@@ -88,7 +88,6 @@ public class KnowledgeBaseTest {
 		assertFalse(this.knowledgeBase.answer("hijo(juan, pepe)"));
 
 		assertTrue(this.knowledgeBase.answer("hijo(alejandro, roberto)"));
-		assertTrue(this.knowledgeBase.answer("hija(pepa, juan)"));
 		assertTrue(this.knowledgeBase.answer("hija(maria, hector)"));
 
 		assertTrue(this.knowledgeBase.answer("tio(nicolas, alejandro, roberto)"));
