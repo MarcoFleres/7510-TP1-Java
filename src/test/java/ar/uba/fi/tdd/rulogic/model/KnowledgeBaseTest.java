@@ -27,7 +27,7 @@ public class KnowledgeBaseTest {
 
 		knowledgeBase = new KnowledgeBase(db);
 
-		System.out.println(knowledgeBase);
+		//System.out.println(knowledgeBase);
 
 	}
 
