@@ -42,7 +42,7 @@ public class KnowledgeBase {
 
 		LinkedList<Evaluable> evaluables = this.evaluables.get(query.getVerb());
 
-		if(evaluables == null || evaluables.size() == 0) {
+		if(evaluables == null) {
 			return false;
 		}
 
