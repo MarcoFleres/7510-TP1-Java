@@ -18,6 +18,7 @@ class Rule implements Evaluable {
 
         Matcher matcher = rulePattern.matcher(line);
 
+        // El plugin "cobertura" no parece reconocer este branch, aunque haya test que lo prueban.
         if(! matcher.find()) throw new IllegalArgumentException(line + " is not a Rule");
 
         verb = matcher.group(1);
@@ -56,6 +57,7 @@ class Rule implements Evaluable {
     }
 
     @Override
+    @CoverageIgnore
     public String toString() {
         return "Rule{" +
                 "verb='" + verb + '\'' +

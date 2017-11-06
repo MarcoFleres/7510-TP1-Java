@@ -25,6 +25,7 @@ public class Query {
     public Query(String line) {
         Matcher matcher = assertionPattern.matcher(line);
 
+        // El plugin "cobertura" no parece reconocer este branch, aunque haya test que lo prueban.
         if(!matcher.find()) throw new InvalidParameterException("Invalid Query: " + line);
 
         verb = matcher.group(1);

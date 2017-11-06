@@ -24,7 +24,9 @@ class Fact implements Evaluable {
 
         Matcher matcher = factPattern.matcher(line);
 
+        // El plugin "cobertura" no parece reconocer este branch, aunque haya test que lo prueban.
         if(!matcher.find()) throw new InvalidParameterException("Line " + line + " is not a Fact");
+
 
         verb = matcher.group(1);
 
