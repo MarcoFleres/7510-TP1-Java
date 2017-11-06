@@ -55,6 +55,7 @@ class Fact implements Evaluable {
     }
 
     @Override
+    @CoverageIgnore
     public String toString() {
         return "Fact{" +
                 "verb='" + verb + '\'' +

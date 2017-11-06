@@ -109,6 +109,7 @@ class Rule implements Evaluable {
         }
 
         @Override
+        @CoverageIgnore
         public String toString() {
             return "Target{" +
                     "verb='" + verb + '\'' +

@@ -51,6 +51,7 @@ public class KnowledgeBase {
 	}
 
 	@Override
+	@CoverageIgnore
 	public String toString() {
 
 		StringBuilder str = new StringBuilder();
