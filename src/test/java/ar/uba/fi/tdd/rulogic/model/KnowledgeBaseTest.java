@@ -94,6 +94,8 @@ public class KnowledgeBaseTest {
 		assertTrue(this.knowledgeBase.answer("tio(nicolas, cecilia, roberto)"));
 		assertFalse(this.knowledgeBase.answer("tia(maria, alejandro, roberto)"));
 
+		assertFalse(this.knowledgeBase.answer("tia(maria, roberto)"));		//numero de parametros incorrecto
+
 	}
 
 }
